@@ -24,7 +24,7 @@ const BookingItem = ({
         <div className="flex flex-col gap-2">
           <p className="font-bold">{serviceName}</p>
           <div className="flex items-center gap-2.5">
-            <Avatar className="h6 w-6">
+            <Avatar className="h-6 w-6">
               <AvatarImage src={barbershopImageUrl} />
             </Avatar>
           </div>
