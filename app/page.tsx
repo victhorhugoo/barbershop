@@ -45,6 +45,7 @@ export default async function Home() {
             barbershopName="Barbearia do Luiz"
             barbershopImageUrl="https://utfs.io/f/2f9278ba-3975-4026-af46-64af78864494-16u.png"
             date={new Date()}
+            status="confirmed"
           />
         </PageSection>
         <PageSection>
