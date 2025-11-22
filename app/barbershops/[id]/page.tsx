@@ -7,7 +7,6 @@ import { Button } from "@/app/_components/ui/button";
 import { Separator } from "@/app/_components/ui/separator";
 import { ServiceItem } from "@/app/_components/service-item";
 import { PhoneItem } from "@/app/_components/phone-item";
-import Footer from "@/app/_components/footer";
 
 const BarbershopPage = async (props: PageProps<"/barbershops/[id]">) => {
   const { id } = await props.params;
@@ -139,7 +138,16 @@ const BarbershopPage = async (props: PageProps<"/barbershops/[id]">) => {
         </div>
 
         {/* Footer */}
-        <Footer />
+        <div className="flex w-full flex-col items-center gap-2.5 px-0 pt-[60px] pb-0">
+          <div className="bg-secondary flex w-full flex-col items-start justify-center gap-1.5 px-[30px] py-8 text-xs leading-none">
+            <p className="text-foreground font-semibold">
+              © 2025 Copyright Aparatus
+            </p>
+            <p className="text-muted-foreground font-normal">
+              Todos os direitos reservados.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -7,10 +7,11 @@ import BarbershopItem from "./_components/barbershop-item";
 import Footer from "./_components/footer";
 import {
   PageContainer,
-  PageScroller,
+  PageSectionScroller,
   PageSection,
   PageSectionTitle,
 } from "./_components/ui/page";
+import QuickSearchButtons from "./_components/quick-search-buttons";
 
 export default async function Home() {
   const RecommendedBarbershops = await prisma.barbershop.findMany({
@@ -29,6 +30,7 @@ export default async function Home() {
       <Header />
       <PageContainer>
         <SearchInput />
+        <QuickSearchButtons />
         <Image
           src={banner}
           alt="Agende agora!"
@@ -37,19 +39,19 @@ export default async function Home() {
         />
         <PageSection>
           <PageSectionTitle>Recomendados</PageSectionTitle>
-          <PageScroller>
+          < PageSectionScroller>
             {RecommendedBarbershops.map((barbershop) => (
               <BarbershopItem key={barbershop.id} barbershop={barbershop} />
             ))}
-          </PageScroller>
+          </ PageSectionScroller>
         </PageSection>
         <PageSection>
           <PageSectionTitle>Mais Polulares</PageSectionTitle>
-          <PageScroller>
+          < PageSectionScroller>
             {PopularBarbershops.map((barbershop) => (
               <BarbershopItem key={barbershop.id} barbershop={barbershop} />
             ))}
-          </PageScroller>
+          </ PageSectionScroller>
         </PageSection>
       </PageContainer>
       <Footer />
