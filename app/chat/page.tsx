@@ -25,7 +25,7 @@ const INITIAL_MESSAGES = [
     parts: [
       {
         type: "text" as const,
-        text: "Olá! Sou o Aparatus, seu assistente pessoal.\n\nEstou aqui para te auxiliar a agendar seu corte ou barba, encontrar as barbearias disponíveis perto de você e responder às suas dúvidas.",
+        text: "Olá! Sou o atendente virtual.\n\nEstou aqui para te auxiliar a agendar seu corte ou barba, encontrar as barbearias disponíveis perto de você e responder às suas dúvidas.",
       },
     ],
   },
@@ -39,6 +39,8 @@ export default function ChatPage() {
       api: "/api/chat",
     }),
   });
+
+  console.log({ messages });
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -72,12 +74,20 @@ export default function ChatPage() {
         <div className="flex items-center justify-end gap-[15px]" />
       </div>
 
-      <div className="flex-1 overflow-y-auto pb-24 [&::-webkit-scrollbar]:hidden">
+      <div className="w-full flex-1 overflow-y-auto pb-24 [&::-webkit-scrollbar]:hidden">
         {messages.length === 0
           ? INITIAL_MESSAGES.map((msg) => (
               <ChatMessage key={msg.id} message={msg} />
             ))
-          : messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+          : messages.map((msg, index) => (
+              <ChatMessage
+                key={msg.id}
+                message={msg}
+                isStreaming={
+                  status === "streaming" && index === messages.length - 1
+                }
+              />
+            ))}
         <div ref={messagesEndRef} />
       </div>
 
