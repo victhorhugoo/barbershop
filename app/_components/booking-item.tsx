@@ -29,7 +29,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
-import { Booking } from "../generated/prisma/client";
+import { Booking } from "@/generated/prisma/client";
 
 interface BookingItemProps {
   booking: {
