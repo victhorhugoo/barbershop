@@ -2,7 +2,7 @@
 
 import { actionClient } from "@/lib/action-client";
 import { prisma } from "@/lib/prisma";
-import { Booking } from "@/generated/prisma";
+import { Booking } from "../../generated/prisma";
 import z from "zod";
 import { endOfDay, format, startOfDay } from "date-fns";
 import { auth } from "@/lib/auth";
