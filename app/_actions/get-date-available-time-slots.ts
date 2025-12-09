@@ -2,11 +2,13 @@
 
 import { actionClient } from "@/lib/action-client";
 import { prisma } from "@/lib/prisma";
+import { Booking } from "@/generated/prisma";
 import z from "zod";
 import { endOfDay, format, startOfDay } from "date-fns";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { returnValidationErrors } from "next-safe-action";
+//import { Booking } from "@prisma/client";
 
 const inputSchema = z.object({
   barbershopId: z.string(),
@@ -46,7 +48,7 @@ export const getDateAvailableTimeSlots = actionClient
         _errors: ["Unauthorized"],
       });
     }
-    const bookings = await prisma.booking.findMany({
+    const bookings: Booking[] = await prisma.booking.findMany({
       where: {
         barbershopId,
         date: {
