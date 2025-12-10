@@ -5,10 +5,11 @@ import Header from "../_components/header";
 import QuickSearchButtons from "../_components/quick-search-buttons";
 import SearchInput from "../_components/search-input";
 import { PageContainer } from "../_components/ui/page";
+import type { Barbershop } from "@/generated/prisma";
 
 const BarbershopsPage = async ({ searchParams }: PageProps<"/barbershops">) => {
   const { search } = await searchParams;
-  const barbershops = search
+  const barbershops: Barbershop[] = search
     ? await prisma.barbershop.findMany({
         where: {
           services: {
