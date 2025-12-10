@@ -7,6 +7,7 @@ import { Button } from "@/app/_components/ui/button";
 import { Separator } from "@/app/_components/ui/separator";
 import { ServiceItem } from "@/app/_components/service-item";
 import { PhoneItem } from "@/app/_components/phone-item";
+import { BarbershopService } from "@/generated/prisma/client";
 
 const BarbershopPage = async (props: PageProps<"/barbershops/[id]">) => {
   const { id } = await props.params;
@@ -109,7 +110,7 @@ const BarbershopPage = async (props: PageProps<"/barbershops/[id]">) => {
             </p>
           </div>
           <div className="flex w-full flex-col gap-3">
-            {barbershop.services.map((service) => (
+            {barbershop.services.map((service: BarbershopService) => (
               <ServiceItem
                 key={service.id}
                 service={{ ...service, barbershop }}
@@ -131,7 +132,7 @@ const BarbershopPage = async (props: PageProps<"/barbershops/[id]">) => {
             </p>
           </div>
           <div className="flex w-full flex-col gap-3">
-            {barbershop.phones.map((phone, index) => (
+            {barbershop.phones.map((phone: string, index: number) => (
               <PhoneItem key={index} phone={phone} />
             ))}
           </div>
