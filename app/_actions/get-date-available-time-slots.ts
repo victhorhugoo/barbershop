@@ -2,7 +2,7 @@
 
 import { actionClient } from "@/lib/action-client";
 import { prisma } from "@/lib/prisma";
-import { Booking } from "../../generated/prisma";
+import { Booking } from "@/generated/prisma/client";
 import z from "zod";
 import { endOfDay, format, startOfDay } from "date-fns";
 import { auth } from "@/lib/auth";
@@ -57,7 +57,7 @@ export const getDateAvailableTimeSlots = actionClient
         },
       },
     });
-    const occupiedSlots = bookings.map((booking) =>
+    const occupiedSlots = bookings.map((booking: Booking) =>
       format(booking.date, "HH:mm"),
     );
     const availableTimeSlots = TIME_SLOTS.filter(
