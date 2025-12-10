@@ -57,7 +57,7 @@ export const getDateAvailableTimeSlots = actionClient
         },
       },
     });
-    const occupiedSlots = bookings.map((booking: Booking) =>
+    const occupiedSlots = bookings.map((booking) =>
       format(booking.date, "HH:mm"),
     );
     const availableTimeSlots = TIME_SLOTS.filter(
