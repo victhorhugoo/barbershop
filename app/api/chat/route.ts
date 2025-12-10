@@ -1,8 +1,9 @@
-import { google } from "@ai-sdk/google";
+//import { google } from "@ai-sdk/google";
 import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
 import { openai } from "@ai-sdk/openai";
 import z from "zod";
 import { prisma } from "@/lib/prisma";
+import { BarbershopService } from "@/generated/prisma/client";
 import { getDateAvailableTimeSlots } from "@/app/_actions/get-date-available-time-slots";
 import { createBooking } from "@/app/_actions/create-booking";
 
@@ -84,16 +85,20 @@ export const POST = async (request: Request) => {
                 services: true,
               },
             });
-            return barbershops.map((barbershop) => ({
-              barbershopId: barbershop.id,
-              name: barbershop.name,
-              address: barbershop.address,
-              services: barbershop.services.map((service) => ({
-                id: service.id,
-                name: service.name,
-                price: service.priceInCents / 100,
-              })),
-            }));
+            return barbershops.map(
+              (barbershop: (typeof barbershops)[number]) => ({
+                barbershopId: barbershop.id,
+                name: barbershop.name,
+                address: barbershop.address,
+                services: barbershop.services.map(
+                  (service: BarbershopService) => ({
+                    id: service.id,
+                    name: service.name,
+                    price: service.priceInCents / 100,
+                  }),
+                ),
+              }),
+            );
           }
           const barbershops = await prisma.barbershop.findMany({
             where: {
@@ -106,16 +111,20 @@ export const POST = async (request: Request) => {
               services: true,
             },
           });
-          return barbershops.map((barbershop) => ({
-            barbershopId: barbershop.id,
-            name: barbershop.name,
-            address: barbershop.address,
-            services: barbershop.services.map((service) => ({
-              id: service.id,
-              name: service.name,
-              price: service.priceInCents / 100,
-            })),
-          }));
+          return barbershops.map(
+            (barbershop: (typeof barbershops)[number]) => ({
+              barbershopId: barbershop.id,
+              name: barbershop.name,
+              address: barbershop.address,
+              services: barbershop.services.map(
+                (service: BarbershopService) => ({
+                  id: service.id,
+                  name: service.name,
+                  price: service.priceInCents / 100,
+                }),
+              ),
+            }),
+          );
         },
       }),
       getAvailableTimeSlotsForBarbershop: tool({
