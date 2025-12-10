@@ -10,6 +10,16 @@ import {
   PageSectionTitle,
 } from "../_components/ui/page";
 import BookingItem from "../_components/booking-item";
+import type {
+  Booking,
+  Barbershop,
+  BarbershopService,
+} from "@/generated/prisma/client";
+
+type FullBooking = Booking & {
+  service: BarbershopService;
+  barbershop: Barbershop;
+};
 
 const BookingsPage = async () => {
   const session = await auth.api.getSession({
@@ -20,7 +30,7 @@ const BookingsPage = async () => {
     redirect("/");
   }
 
-  const bookings = await prisma.booking.findMany({
+  const bookings: FullBooking[] = await prisma.booking.findMany({
     where: {
       userId: session.user.id,
     },
