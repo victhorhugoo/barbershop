@@ -19,3 +19,7 @@ O objetivo central do projeto é otimizar o processo de agendamento, reduzir atr
 - React
 - Node
 ---
+## :camera: Imagens do Projeto
+<img width="269" height="586" alt="Captura de tela 2025-12-15 194209" src="https://github.com/user-attachments/assets/ebdef2ef-8081-4524-9926-7db3675a5f16" />
+<img width="266" height="586" alt="Captura de tela 2025-12-15 194231" src="https://github.com/user-attachments/assets/126aa3c6-05d8-40f2-8f82-82946ce0cb28" />
+
