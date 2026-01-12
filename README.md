@@ -1,5 +1,7 @@
 # :computer: Plataforma de agendamentos com IA para barbearias e salões
 ---
+:link: Link do projeto:
+Vercel - https://barbershop-vict.vercel.app/
 
 ## Explicando o projeto
 
